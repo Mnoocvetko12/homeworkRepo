@@ -1,7 +1,16 @@
 import java.util.Scanner;
 
 public class MorskiShax {
-
+	
+	static void printMatrix(char[][]matrix){
+		for (int row = 0; row < matrix.length; row++) {
+			for (int col = 0; col < matrix[row].length; col++) {
+				System.out.print(matrix[row][col] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
 	static boolean isFull(char[][] matrix) {
 		boolean full = true;
 		for (int row = 0; row < matrix.length; row++) {
@@ -11,7 +20,7 @@ public class MorskiShax {
 					break;
 				}
 			}
-			if (full = false) {
+			if (full == false) {
 				break;
 			}
 		}
@@ -20,40 +29,22 @@ public class MorskiShax {
 
 	static boolean checkSecDiag(char[][] matrix) {
 		boolean secDiagSame = false;
-		int count = 0;
-		for (int row = 0; row < matrix.length - 1; row++) {
-			for (int col = matrix[row].length - 1; col > 0; col--) {
-				if (matrix[row][col] == matrix[row + 1][col - 1] && matrix[row][col] != '\0') {
-					count++;
-				} else {
-					count = 0;
-				}
-			}
-			if (count == 2) {
-				secDiagSame = true;
-				return secDiagSame;
-			}
+		int row=0;
+		int col=2;
+		if(matrix[row][col]==matrix[row+1][col-1] && matrix[row][col]==matrix[row+2][col-2] && matrix[row+1][col-1]==matrix[row+2][col-2] && matrix[row][col]!='\0'){
+			secDiagSame=true;
 		}
 		return secDiagSame;
 	}
 
 	static boolean checkMainDiag(char[][] matrix) {
 		boolean mainDiagSame = false;
-		int count = 0;
-		for (int row = 0; row < matrix.length - 1; row++) {
-			for (int col = 0; col < matrix[row].length - 1; col++) {
-				if (matrix[row][col] == matrix[row + 1][col + 1] && matrix[row][col] != '\0') {
-					count++;
-				} else {
-					count = 0;
-				}
-			}
-			if (count == 2) {
-				mainDiagSame = true;
-				return mainDiagSame;
-			}
+		int row=0;
+		int col=0;
+		if(matrix[row][col]==matrix[row+1][col+1] && matrix[row][col]==matrix[row+2][col+2] && matrix[row+1][col+1]==matrix[row+2][col+2] && matrix[row][col]!='\0'){
+			mainDiagSame=true;
 		}
-		return mainDiagSame;
+			return mainDiagSame;
 	}
 
 	static boolean checkRow(char[][] matrix) {
@@ -116,8 +107,13 @@ public class MorskiShax {
 				col = scan.nextInt();
 			}
 			matrix[row][col] = 'X';
+			printMatrix(matrix);
 			if (checkCol(matrix) == true || checkRow(matrix) == true || checkMainDiag(matrix) == true || checkSecDiag(matrix) == true) {
 				System.out.println("player 1 wins");
+				return;
+			}
+			if(isFull(matrix) == true){
+				System.out.println("No more empty squares. ");
 				return;
 			}
 			System.out.println("Player 2,(O) enter coordinates: ");
@@ -129,15 +125,10 @@ public class MorskiShax {
 				col = scan.nextInt();
 			}
 			matrix[row][col] = 'O';
+			printMatrix(matrix);
 			if (checkCol(matrix) == true || checkRow(matrix) == true || checkMainDiag(matrix) == true || checkSecDiag(matrix) == true) {
 				System.out.println("player 2 wins");
 				return;
-			}
-			for (int i = 0; i < matrix.length; i++) {
-				for (int j = 0; j < matrix[i].length; j++) {
-					System.out.print(matrix[i][j] + " ");
-				}
-				System.out.println();
 			}
 		}
 		System.out.println("It's a tie");
