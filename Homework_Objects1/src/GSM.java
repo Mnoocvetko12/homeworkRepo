@@ -22,15 +22,15 @@ public class GSM {
 	void removeSimCard(){
 		if(hasSimCard==true){
 			hasSimCard=false;
-			//simMobileNumber=null;
+			simMobileNumber="";
 		}
 	}
 	void printInfoForTheLastOutgoingCall(){
-		System.out.println(this.lastOutgoingCall);
+		System.out.println("last outgoing call "+this.lastOutgoingCall);
 		
 	}
 	void printInfoForTheLastIncomingCall(){
-		System.out.println(this.lastIncomingCall);
+		System.out.println("last incomming call "+this.lastIncomingCall);
 		
 	}
 

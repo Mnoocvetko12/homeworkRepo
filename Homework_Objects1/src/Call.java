@@ -1,14 +1,10 @@
 
 public class Call {
-	float priceForAMinute;
+	float priceForAMinute=0.1f;
 	GSM caller;
 	GSM receiver;
 	int duration;
 	
-	void getSumForCall(GSM caller, float priceforAMinute){
-		float sum=priceForAMinute * caller.outgoingCallsDuration;
-		System.out.println("the total price for the call is "+sum+" lv");
-	}
 	void call(GSM receiver, int duration){
 		if(receiver.hasSimCard==false || caller.hasSimCard==false){
 			System.out.println("The receiver has no SIM card");
@@ -30,20 +26,15 @@ public class Call {
 			System.out.println("the duration has to be a positive, integer number.");
 			return;
 		}
-		caller.lastOutgoingCall=receiver.simMobileNumber;
-		receiver.lastIncomingCall=caller.simMobileNumber;
+		this.caller.lastOutgoingCall=this.receiver.simMobileNumber;
+		this.receiver.lastIncomingCall=this.caller.simMobileNumber;
 		
-		caller.outgoingCallsDuration+=duration;
-		System.out.println("The durations of all the calls is "+caller.outgoingCallsDuration+ " min.");
+		this.caller.outgoingCallsDuration+=duration;
+		System.out.println("The durations of all the calls for "+this.caller.simMobileNumber+" is " +this.caller.outgoingCallsDuration+ " min.");
 	}
-	void printInfoForTheLastOutgoingCall(){
-		System.out.println("caller's last outgoing call "+caller.lastOutgoingCall);
-		System.out.println("receiver's last outging call "+receiver.lastOutgoingCall);
-		
+	void getSumForCall(GSM caller, float priceforAMinute){
+		float sum=priceForAMinute * caller.outgoingCallsDuration;
+		System.out.println("the total price for the call is "+sum+" lv");
 	}
-	void printInfoForTheLastIncomingCall(){
-		System.out.println("receiver's last incoming call "+receiver.lastIncomingCall);
-		System.out.println("caller's last incoming call "+caller.lastIncomingCall);
-		
-	}
+	
 }

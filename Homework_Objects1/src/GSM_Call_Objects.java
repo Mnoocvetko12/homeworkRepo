@@ -13,7 +13,6 @@ public class GSM_Call_Objects {
 		Call ring= new Call();
 		
 		ring.caller=mobile;
-		ring.priceForAMinute=0.1f;
 		ring.receiver=mobile2;
 		
 		ring.call(ring.receiver, 50);
@@ -26,13 +25,20 @@ public class GSM_Call_Objects {
 		mobile3.hasSimCard=true;
 		mobile3.simMobileNumber="0866666666";
 		
-		ring.caller=mobile;
-		ring.receiver=mobile3;
+		ring.caller=mobile3;
+		ring.receiver=mobile;
 		
 		ring.call(ring.receiver, 30);
 		ring.getSumForCall(ring.caller, ring.priceForAMinute);
 		ring.caller.printInfoForTheLastIncomingCall();
-		ring.receiver.printInfoForTheLastOutgoingCall();
+		ring.caller.printInfoForTheLastOutgoingCall();
+		
+		ring.caller=mobile;
+		ring.receiver=mobile3;
+		ring.call(ring.receiver, 25);
+		ring.getSumForCall(ring.caller, ring.priceForAMinute);
+		ring.caller.printInfoForTheLastIncomingCall();
+		ring.caller.printInfoForTheLastOutgoingCall();
 	}
 		
 		
