@@ -101,7 +101,7 @@ public class MorskiShax {
 			System.out.println("Player 1,(X) enter coordinates: ");
 			row = scan.nextInt();
 			col = scan.nextInt();
-			while (matrix[row][col] == 'X' || matrix[row][col] == 'O') {
+			while (row>2 || row<0 || col>2 || col<0 || matrix[row][col] == 'X' || matrix[row][col] == 'O' ) {
 				System.out.println("Player 1,(X) enter coordinates: ");
 				row = scan.nextInt();
 				col = scan.nextInt();
@@ -113,14 +113,13 @@ public class MorskiShax {
 				return;
 			}
 			if(isFull(matrix) == true){
-				System.out.println("No more empty squares. ");
-				return;
+				break;
 			}
 			System.out.println("Player 2,(O) enter coordinates: ");
 			row = scan.nextInt();
 			col = scan.nextInt();
-			while (matrix[row][col] == 'X' || matrix[row][col] == 'O') {
-				System.out.println("Player 2,(X) enter coordinates: ");
+			while (row>2 || row<0 || col>2 || col<0 ||matrix[row][col] == 'X' || matrix[row][col] == 'O' ) {
+				System.out.println("Player 2,(O) enter coordinates: ");
 				row = scan.nextInt();
 				col = scan.nextInt();
 			}
@@ -131,7 +130,7 @@ public class MorskiShax {
 				return;
 			}
 		}
-		System.out.println("It's a tie");
+		System.out.println("No more empty cells.It's a tie.");
 
 	}
 
