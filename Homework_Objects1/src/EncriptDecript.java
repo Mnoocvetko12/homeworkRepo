@@ -22,10 +22,10 @@ public class EncriptDecript {
 	public static String encripting(String text) {
 
 		char[][] encripting = { { 'B', 'M', 'S', 'J', 'C', },
-					{ 'I', 'F', 'N', 'T', 'K', },
-					{ 'R', 'L', 'A', 'H', 'E', },
-					{ 'D', 'O', 'G', 'Q', 'V', }, 
-					{ 'U', 'W', 'X', 'Y', 'P', }, };
+								{ 'I', 'F', 'N', 'T', 'K', },
+								{ 'R', 'L', 'A', 'H', 'E', },
+								{ 'D', 'O', 'G', 'Q', 'V', }, 
+								{ 'U', 'W', 'X', 'Y', 'P', }, };
 
 		char firstChar = 0;
 		char secondChar = 0;
@@ -41,15 +41,21 @@ public class EncriptDecript {
 			firstChar = text.charAt(i);
 			secondChar = text.charAt(i + 1);
 			for (int row = 0; row < encripting.length; row++) {
+				boolean first=false;
+				boolean second=false;
 				for (int col = 0; col < encripting[row].length; col++) {
 					if (firstChar == encripting[row][col]) {
 						firstRow = row;
 						firstCol = col;
+						first=true;
 					}
 					if (secondChar == encripting[row][col]) {
 						secondRow = row;
 						secondCol = col;
+						second=true;
 					}
+				}if(first==true && second ==true){
+					break;
 				}
 			}
 			if (firstCol == secondCol) {
@@ -88,10 +94,10 @@ public class EncriptDecript {
 
 	static String decript(String newText) {
 		char[][] decripting = { { 'B', 'M', 'S', 'J', 'C', }, 
-					{ 'I', 'F', 'N', 'T', 'K', },
-					{ 'R', 'L', 'A', 'H', 'E', },
-					{ 'D', 'O', 'G', 'Q', 'V', },
-					{ 'U', 'W', 'X', 'Y', 'P', }, };
+								{ 'I', 'F', 'N', 'T', 'K', },
+								{ 'R', 'L', 'A', 'H', 'E', },
+								{ 'D', 'O', 'G', 'Q', 'V', },
+								{ 'U', 'W', 'X', 'Y', 'P', }, };
 
 		char firstChar = 0;
 		char secondChar = 0;
@@ -106,15 +112,21 @@ public class EncriptDecript {
 			secondChar = newText.charAt(i + 1);
 
 			for (int row = 0; row < decripting.length; row++) {
+				boolean first= false;
+				boolean second= false;
 				for (int col = 0; col < decripting[row].length; col++) {
 					if (decripting[row][col] == firstChar) {
 						firstCharRow = row;
 						firstCharCol = col;
+						first= true;
 					}
 					if (decripting[row][col] == secondChar) {
 						secCharRow = row;
 						secCharCol = col;
+						second=true;
 					}
+				}if(first==true && second ==true){
+					break;
 				}
 			}
 			if ((firstCharCol == secCharCol)) {
@@ -122,12 +134,6 @@ public class EncriptDecript {
 				firstCharRow--;
 				secCharRow--;
 
-				if (firstCharRow >= decripting.length) {
-					firstCharRow = 0;
-				}
-				if (secCharRow >= decripting.length) {
-					secCharRow = 0;
-				}
 				if(firstCharRow<0){
 					firstCharRow=decripting.length-1;
 				}
@@ -141,12 +147,7 @@ public class EncriptDecript {
 				if (firstCharRow == secCharRow) {
 					firstCharCol--;
 					secCharCol--;
-					if (firstCharCol >= decripting.length) {
-						firstCharCol = 0;
-					}
-					if (secCharCol >= decripting.length) {
-						secCharCol = 0;
-					}
+					
 					if(firstCharCol<0){
 						firstCharCol=decripting.length-1;
 					}
