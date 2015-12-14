@@ -21,7 +21,7 @@ public class MarineChess {
 				System.out.print("Player one move: ");
 				row = input.nextInt();
 				col = input.nextInt();
-				if (validMove(row, col)) {
+				if (validMove(row, col) && checkForEmpty(row, col, table)) {
 					table[row][col] = checkChar;
 					break;
 				}
@@ -48,7 +48,7 @@ public class MarineChess {
 
 				row = input.nextInt();
 				col = input.nextInt();
-				if (validMove(row, col)) {
+				if (validMove(row, col) && checkForEmpty(row, col, table)) {
 					table[row][col] = checkChar;
 					break;
 				}
@@ -78,10 +78,10 @@ public class MarineChess {
 	// this method check for valid move if position is empty return true
 	public static boolean checkForEmpty(int row, int col, char[][] table) {
 
-		if (validMove(row, col) || table[row][col] != '*') {
-			return false;
+		if (validMove(row, col) && table[row][col] == '*') {
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	// this method make matrix visible for players
@@ -97,10 +97,10 @@ public class MarineChess {
 	//this method check for valid row or col input
 	public static boolean validMove(int row, int col) {
 
-		if ((row < 1 || row > 3) || (col < 1 || col > 3)) {
-			return false;
+		if ((row > 0 || row < 4) || (col > 0 || col < 4)) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	//this method check for row win if any row has three equals elements game is over
@@ -115,6 +115,7 @@ public class MarineChess {
 					}
 				} else {
 					count = 0;
+					break;
 				}
 			}
 
@@ -134,6 +135,7 @@ public class MarineChess {
 					}
 				} else {
 					count = 0;
+					break;
 				}
 			}
 		}
