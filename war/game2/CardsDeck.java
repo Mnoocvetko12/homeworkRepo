@@ -6,7 +6,7 @@ import java.util.Collections;
 public class CardsDeck {
 
 	private String[] suit = {"club", "diamond", "heart", "spade"};
-	private String[] rank = {"two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace",};
+	private String[] rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A",};
 	private ArrayList<Card> cardDeck;
 	
 	

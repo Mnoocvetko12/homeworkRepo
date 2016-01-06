@@ -17,7 +17,7 @@ public class Player {
 	public void printPlayerDeck() {
 		int count = 1;
 		for (Card card : playCards) {
-			System.out.println(count + " " + card.getRank() + " " + card.getSuit());
+			System.out.println(count + ": " + card.getRank() + " " + card.getSuit());
 			count++;
 		}
 	}
@@ -25,9 +25,9 @@ public class Player {
 	public void printPlayerWinDeck() {
 		int count = 1;
 		for (Card card : winCard) {
-			System.out.println(count + " " + card.getRank() + " " + card.getSuit());
+			System.out.println(count + ": " + card.getRank() + " " + card.getSuit());
 			count++;
-		}
+		} 
 	}
 	
 	public Card getCard(int i) {	
